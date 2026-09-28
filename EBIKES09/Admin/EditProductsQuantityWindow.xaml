@@ -1,0 +1,99 @@
+﻿<Page x:Class="EBIKES09.EditProductsQuantityPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EBIKES09"
+         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Редактирование количества товаров" 
+        Background="#1e2b38"
+        >
+    <Page.Resources>
+        <!-- Стиль для текстовых блоков -->
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+        </Style>
+
+        <!-- Стиль для кнопок -->
+        <Style x:Key="CustomButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#FF0E263F"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect ShadowDepth="3" Color="#40000000" Opacity="0.5" BlurRadius="5"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Стиль для TextBox -->
+        <Style x:Key="CustomTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Background" Value="#293a49"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#4a6073"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Foreground="White" Text="Редактирование количества и активности товаров" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"  FontSize="34" Margin="20" />
+        
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <TextBox Foreground="White" x:Name="SearchTextBox" Style="{StaticResource CustomTextBoxStyle}" Height="30" Width="300"  Margin="10"   HorizontalAlignment="Left" VerticalAlignment="Center"></TextBox>
+            <Button Content="Применить поиск" Click="ButtonSearch_Click" Style="{StaticResource CustomButtonStyle}" Height="30" Width="150"/>
+        </StackPanel>
+        
+        <DataGrid MinHeight="300" MaxHeight="1000" x:Name="ProductsDataGrid" Grid.Row="2"   Margin="10" AutoGenerateColumns="False" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding ProductId}" IsReadOnly="True" />
+                <DataGridTemplateColumn Header="Фото" Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Viewbox MinHeight="80" MinWidth="80" MaxHeight="130" MaxWidth="130" Stretch="Uniform" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Image Source="{Binding ImageUrl}"/>
+                            </Viewbox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Название" Binding="{Binding ProductName}" FontSize="20" IsReadOnly="True" Width="*"/>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Price}" FontSize="20" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Категория" Binding="{Binding Category.CategoryName}" FontSize="20"  IsReadOnly="True" Width="auto"/>
+                <DataGridTextColumn Header="Описание" Binding="{Binding Description}" FontSize="20" Visibility="Collapsed" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Количество" Binding="{Binding StockQuantity}" FontSize="20" Width="auto"/>
+                <DataGridCheckBoxColumn Header="Активный" Binding="{Binding IsActive}"  Width="auto"  />
+                <DataGridTemplateColumn Header="Действие" Width="auto" Visibility="Collapsed">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Height="30" Width="auto" Margin="5" Content="Удалить товар" Click="ButtonDropProduct_Click" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Сохранить изменения" Style="{StaticResource CustomButtonStyle}" Grid.Row="3"  HorizontalAlignment="Right" Margin="10" VerticalAlignment="Center"  Click="ButtonSaveChanges_Click"/>
+    </Grid>
+</Page>

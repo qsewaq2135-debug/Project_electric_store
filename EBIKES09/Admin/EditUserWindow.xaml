@@ -1,0 +1,75 @@
+﻿<Page x:Class="EBIKES09.EditUserPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EBIKES09"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Редактирование пользователя" 
+        Background="#1e2b38">
+    <Page.Resources>
+        <Style x:Key="CustomButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#FF0E263F"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect ShadowDepth="3" Color="#40000000" Opacity="0.5" BlurRadius="5"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <TextBlock Text="Редактирование пользователя" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Margin="20" Foreground="White" />
+
+        <!-- Поля для редактирования -->
+        <StackPanel Grid.Row="1" Margin="20">
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Имя:" Width="120" Foreground="White" />
+                <TextBox x:Name="FirstNameTextBox" Width="200" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Фамилия:" Width="120" Foreground="White" />
+                <TextBox x:Name="LastNameTextBox" Width="200" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Email:" Width="120" Foreground="White" />
+                <TextBox x:Name="EmailTextBox" Width="200" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Телефон:" Width="120" Foreground="White" />
+                <TextBox x:Name="PhoneNumberTextBox" Width="200" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Логин:" Width="120" Foreground="White" />
+                <TextBox x:Name="LoginTextBox" Width="200" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Пароль:" Width="120" Foreground="White" />
+                <TextBox x:Name="PasswordTextBox" Width="200" />
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Кнопка "Сохранить" -->
+        <Button Content="Сохранить" Style="{StaticResource CustomButtonStyle}" Grid.Row="2" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Center" Click="ButtonSave_Click" />
+    </Grid>
+</Page>

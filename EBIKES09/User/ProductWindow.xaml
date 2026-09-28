@@ -1,0 +1,192 @@
+﻿<Page x:Class="EBIKES09.ProductPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:local="clr-namespace:EBIKES09"
+      mc:Ignorable="d"
+      Title="ProductPage"
+    
+      Background="#F5F5F5">
+
+    <Page.Resources>
+        <local:StockToVisibilityConverter x:Key="StockToVisibilityConverter"/>
+        <local:DiscountPriceConverter x:Key="DiscountPriceConverter"/>
+        <local:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <local:RatingToStarsConverter x:Key="RatingToStarsConverter" />
+        
+        <!-- Стиль для кнопок -->
+        <Style x:Key="CustomButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#FF0E263F"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect ShadowDepth="3" Color="#40000000" Opacity="0.5" BlurRadius="5"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Стиль для текстовых блоков -->
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#0E263F"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+        </Style>
+
+        <!-- Стиль для меню -->
+        <Style x:Key="CustomMenuStyle" TargetType="Menu">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#D0D0D0"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="#0E263F"/>
+        </Style>
+
+        <!-- Стиль для пунктов меню -->
+        <Style x:Key="CustomMenuItemStyle" TargetType="MenuItem">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#0E263F"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="10,5"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="#E8E8E8">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!-- Верхняя панель с логотипом, поиском и корзиной -->
+        <DockPanel Grid.ColumnSpan="5" Background="#E8E8E8" >
+            
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Content="Обновить" Click="ButtonUpdate_Click" Height="30" Width="80" Margin="10" VerticalAlignment="Center" Style="{StaticResource CustomButtonStyle}" Visibility="Collapsed" IsDefault="True"/>
+                <TextBox x:Name="SearchTextBox" Height="30" MinWidth="460" MaxWidth="1920" Margin="20,10,10,10" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <Button Click="ButtonSearch_Click" Content="Поиск" Height="30" Width="80" Margin="10" VerticalAlignment="Center" Style="{StaticResource CustomButtonStyle}" IsDefault="True"/>
+            </StackPanel>
+           
+        </DockPanel>
+
+
+        <ScrollViewer Grid.Row="1" Grid.RowSpan="4" Grid.Column="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <!-- Боковая панель с фильтрами и меню -->
+        <StackPanel Orientation="Vertical" MinHeight="100" MinWidth="200" Grid.Row="1" Grid.RowSpan="4" Grid.Column="0" Background="#E8E8E8" Margin="10">
+            <!-- Фильтр по цене -->
+            <TextBlock Text="Фильтр по цене:" Margin="10" FontSize="16" FontWeight="Bold"/>
+            <Slider x:Name="PriceSlider"
+            Minimum="0"
+            Maximum="1000000"
+            Value="0"
+            Width="200"
+            ValueChanged="PriceSlider_ValueChanged"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Минимальная цена: " Margin="5"/>
+                <TextBlock x:Name="MinPriceText" Text="0" Margin="5"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Максимальная цена: " Margin="5"/>
+                <TextBlock x:Name="MaxPriceText" Text="1000000" Margin="5"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Текущая цена: " Margin="5"/>
+                <TextBlock x:Name="CurrentPriceText" Text="0" Margin="5"/>
+            </StackPanel>
+            <TextBlock Text="Фильтр по бренду:" Margin="10" FontSize="16" FontWeight="Bold"/>
+                <ComboBox x:Name="BrandFilterComboBox" SelectionChanged="BrandFilterComboBox_SelectionChanged" Width="auto"  Margin="10" />
+            <CheckBox FontSize="16" Foreground="#0E263F" x:Name="IsPromotionFilterCheckBox" Content="Только акционные" Margin="10"/>
+            <CheckBox FontSize="16" Foreground="#0E263F" x:Name="InStockFilterCheckBox" Content="Только в наличии" Margin="10" Checked="ApplyFilters" Unchecked="ApplyFilters"/>
+            <Button Visibility="Collapsed" Content="Добавить новый товар" x:Name="AddProductButton" Click="ButtonAdd_Click" Style="{StaticResource CustomButtonStyle}" Margin="10"/>
+                <Button Visibility="Collapsed" Content="Принять поставку" x:Name="acceptDelivery" Click="ButtonAcceptDelivery_Click" Style="{StaticResource CustomButtonStyle}" Margin="10"/>
+                <Button Visibility="Collapsed" Content="Редактировать количество и активность" x:Name="EditProductButton" Click="ButtonEdit_Click" Style="{StaticResource CustomButtonStyle}" Margin="10"/>
+            <Button  Visibility="Collapsed" Content="Добавить акционное предложение" x:Name="PromotionButton" Click="ButtonPromotion_Click" Style="{StaticResource CustomButtonStyle}" Margin="10"/>
+            <Button Visibility="Collapsed" Content="Добавить товары к существующей акции" x:Name="ExistingPromotion" Click="ButtonAddToExistingPromotion_Click" Style="{StaticResource CustomButtonStyle}" Margin="10"/>
+                
+            </StackPanel>
+        </ScrollViewer>
+
+        <ScrollViewer Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="4" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <!-- Список товаров -->
+        <ItemsControl x:Name="ProductItemsControl"  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="4" Margin="10">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="#D0D0D0" Width="300" Height="320" BorderThickness="1" CornerRadius="5" Padding="10" Margin="5" Background="#FFFFFF">
+                        <Button Background="Transparent" BorderThickness="0" Click="ButtonProductInf_click">
+                            <StackPanel Width="auto" Orientation="Vertical">
+                                <TextBlock Text="Нет в наличии" Foreground="Red" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center"
+                           Visibility="{Binding StockQuantity, Converter={StaticResource StockToVisibilityConverter}}"/>
+
+                                <TextBlock Text="{Binding ProductName}" TextWrapping="Wrap" FontWeight="Bold" FontSize="16"/>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <!-- Цена со скидкой -->
+                                    <TextBlock Text="{Binding ., Converter={StaticResource DiscountPriceConverter}}"
+               Name="discountedPriceTextBlock"
+               FontSize="14"
+               FontWeight="Bold"
+               VerticalAlignment="Bottom"
+               Visibility="{Binding HasActivePromotion, Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+                                    <!-- Цена без скидки (зачеркнутая) -->
+                                    <TextBlock Text="{Binding Price, StringFormat='{}{0}₽'}"
+               Name="priceTextBlockK"
+               FontSize="14"
+               Margin="5,0,0,0"
+               VerticalAlignment="Bottom">
+                                        <TextBlock.Style>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="Visibility" Value="Visible" />
+                                                <Style.Triggers>
+                                                    <!-- Зачеркиваем цену, если есть активная акция -->
+                                                    <DataTrigger Binding="{Binding HasActivePromotion}" Value="True">
+                                                        <Setter Property="TextDecorations" Value="Strikethrough" />
+                                                        <Setter Property="Foreground" Value="Gray" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                    <TextBlock Text="{Binding AverageRating, Converter={StaticResource RatingToStarsConverter}}"
+               FontSize="14"
+               Margin="5,0,0,0"
+               VerticalAlignment="Bottom"
+               Foreground="Gold" />
+                                </StackPanel>
+                                    <Image Source="{Binding ImageUrl}"  
+       Width="240" Height="200" Stretch="Uniform" x:Name="ImageProduct"/>
+                                </StackPanel>
+                        </Button>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</Page>

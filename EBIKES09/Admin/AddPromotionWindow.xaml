@@ -1,0 +1,66 @@
+﻿<Page x:Class="EBIKES09.AddPromotionPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EBIKES09"
+        mc:Ignorable="d"
+        Title="Добавление акции"
+        Background="#1e2b38">
+    <Page.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+    </Page.Resources>
+    <Grid VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Добавление акции" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Margin="10" />
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+            <TextBlock Text="Название акции:" Width="160" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBox x:Name="PromotionNameTextBox" Width="250" Margin="5" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+            <TextBlock Text="Значение скидки:" Width="160" VerticalAlignment="Center" />
+            <TextBox x:Name="DiscountValueTextBox" Width="250" Margin="5" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+            <TextBlock Text="Тип скидки:" Width="160" VerticalAlignment="Center" />
+            <ComboBox x:Name="DiscountTypeComboBox" Width="250" Margin="5">
+                <ComboBoxItem Content="percentage" />
+                <ComboBoxItem Content="fixed" />
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+            <TextBlock Text="Описание скидки:" Width="160" VerticalAlignment="Center" />
+            <TextBox x:Name="DescriptionTextBox" Width="250" Margin="5" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+            <TextBlock Text="Начало акции:" Width="160" VerticalAlignment="Center" />
+            <DatePicker x:Name="StartDatePicker" Width="250" Margin="5" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+            <TextBlock Text="Конец акции:" Width="160" VerticalAlignment="Center" />
+            <DatePicker x:Name="EndDatePicker" Width="250" Margin="5" />
+        </StackPanel>
+
+        <Button Content="Выбрать товары" Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,310, 0" Click="ButtonSelectProducts_Click" />
+        <Button Content="Добавить акцию" Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="290,0,10, 0" Click="ButtonAddPromotion_Click" />
+    </Grid>
+</Page>

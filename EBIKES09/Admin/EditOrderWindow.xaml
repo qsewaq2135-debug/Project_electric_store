@@ -1,0 +1,172 @@
+﻿<Page x:Class="EBIKES09.EditOrderPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:local="clr-namespace:EBIKES09"
+      mc:Ignorable="d"
+      Title="EditOrderPage" 
+      Background="#1e2b38">
+
+    <Page.Resources>
+        <!-- Стиль для текстовых блоков -->
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+        </Style>
+
+        <!-- Стиль для кнопок -->
+        <Style x:Key="CustomButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#FF0E263F"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect ShadowDepth="3" Color="#40000000" Opacity="0.5" BlurRadius="5"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Стиль для ComboBox -->
+        <Style x:Key="CustomComboBoxStyle" TargetType="ComboBox">
+            <Setter Property="Background" Value="#293a49"/>
+            <Setter Property="Foreground" Value="#293a49"/>
+            <Setter Property="BorderBrush" Value="#4a6073"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+        <!-- Стиль для ListBox -->
+        <Style x:Key="CustomListBoxStyle" TargetType="ListBox">
+            <Setter Property="Background" Value="#4a6073"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+        </Style>
+
+        <!-- Стиль для элементов ListBox -->
+        <Style x:Key="CustomListBoxItemStyle" TargetType="ListBoxItem">
+            <Setter Property="Background" Value="#293a49"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="BorderBrush" Value="#4a6073"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <TextBlock Text="Редактирование заказа" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="34" Margin="20" Foreground="White" />
+
+        <!-- Основная панель -->
+        <StackPanel Grid.Row="1">
+            <!-- ID заказа -->
+            <StackPanel Orientation="Horizontal" Margin="20,10,20,10">
+                <TextBlock Text="ID Заказа:" Width="140" Foreground="White" />
+                <TextBlock x:Name="CartIdTextBlock" Foreground="White" />
+            </StackPanel>
+
+            <!-- ID пользователя -->
+            <StackPanel Orientation="Horizontal" Margin="20,10,20,10">
+                <TextBlock Text="Пользователь ID:" Width="140" Foreground="White" />
+                <TextBlock x:Name="UserIdTextBlock" Foreground="White" />
+            </StackPanel>
+
+            <!-- Имя пользователя -->
+            <StackPanel Orientation="Horizontal" Margin="20,10,20,10">
+                <TextBlock Text="Имя:" Width="140" Foreground="White" />
+                <TextBlock x:Name="FirstNameTextBlock" Foreground="White" />
+            </StackPanel>
+
+            <!-- Фамилия пользователя -->
+            <StackPanel Orientation="Horizontal" Margin="20,10,20,10">
+                <TextBlock Text="Фамилия:" Width="140" Foreground="White" />
+                <TextBlock x:Name="LastNameTextBlock" Foreground="White" />
+            </StackPanel>
+
+            <!-- Email пользователя -->
+            <StackPanel Orientation="Horizontal" Margin="20,10,20,10">
+                <TextBlock Text="Email:" Width="140" Foreground="White" />
+                <TextBlock x:Name="EmailTextBlock" Foreground="White" />
+            </StackPanel>
+
+            <!-- Номер телефона пользователя -->
+            <StackPanel Orientation="Horizontal" Margin="20,10,20,10">
+                <TextBlock Text="Телефон:" Width="140" Foreground="White" />
+                <TextBlock x:Name="PhoneNumberTextBlock" Foreground="White" />
+            </StackPanel>
+
+            <!-- Дата заказа -->
+            <StackPanel Orientation="Horizontal" Margin="20,10,20,10">
+                <TextBlock Text="Дата заказа:" Width="140" Foreground="White" />
+                <TextBlock x:Name="CreatedAtTextBlock" Foreground="White" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Visibility="Collapsed" x:Name="StackEndDate" Margin="20,10,20,10">
+                <TextBlock Text="Дата завершения:" Width="140" Foreground="White" />
+                <TextBlock x:Name="EndAtTextBlock" Foreground="White" />
+            </StackPanel>
+
+            <!-- Статус заказа -->
+            <StackPanel Orientation="Horizontal" Margin="20,10,20,10">
+                <TextBlock Text="Статус:" Width="140" Foreground="White" />
+                <StackPanel Orientation="Horizontal">
+                    <ComboBox x:Name="StatusComboBox" Width="150" Style="{StaticResource CustomComboBoxStyle}"   />
+                    <TextBlock Text=" - заказ уже завершен" x:Name="TextOreder" Visibility="Collapsed"></TextBlock>
+                </StackPanel>
+                
+            </StackPanel>
+
+            <!-- Товары в заказе -->
+            <TextBlock Text="Товары:" Margin="20,10,20,10" Foreground="White" />
+            <ListBox x:Name="CartItemsListBox" Margin="20" Background="#293a49">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="#293a49" Padding="10" Margin="5" CornerRadius="20">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Товар ID: " Foreground="White" />
+                                    <TextBlock Text="{Binding ProductId}" Foreground="White" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Название товара: " Foreground="White" />
+                                    <TextBlock Text="{Binding Product.ProductName}" Foreground="White" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Количество: " Foreground="White" />
+                                    <TextBlock Text="{Binding Quantity}" Foreground="White" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Цена: " Foreground="White" />
+                                    <TextBlock Text="{Binding UnitPrice, StringFormat='{}{0}₽'}" Foreground="White" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+
+        <!-- Кнопка "Сохранить изменения" -->
+        <Button Content="Сохранить изменения" Grid.Row="2" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Center" Click="ButtonSaveChanges_Click" Style="{StaticResource CustomButtonStyle}" />
+    </Grid>
+</Page>

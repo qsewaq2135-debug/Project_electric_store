@@ -1,0 +1,168 @@
+﻿<Page x:Class="EBIKES09.AddPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EBIKES09"
+         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        Title="AddProductWindow" 
+       Background="#1e2b38"
+       
+       >
+    <Page.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Foreground" Value="#1e2b38"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+
+        
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Text="Добавление товара"  Grid.Row="0"  FontSize="34" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20"  />
+        <Grid  Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Margin="10" >
+                <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                    <TextBlock Text="Изображение:" Width="220" VerticalAlignment="Center"/>
+                    <Button Content="Загрузить изображение"  Margin="5,0,0,0"  Width="180" Click="ButtonLoadImage_Click"/>
+                </StackPanel>
+                <Image x:Name="ImageProduct"  Width="200" Height="200" Margin="10" />
+                <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                    <TextBlock Text="Название товара:"  Width="220" VerticalAlignment="Center"  />
+                    <TextBox x:Name="ProductNameTextBox"   materialDesign:HintAssist.Hint="Название товара"  Margin="5,0,0,0"  Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                    <TextBlock Text="Описание:"  Width="220" VerticalAlignment="Center"  />
+                    <TextBox x:Name="DescriptionTextBox"  materialDesign:HintAssist.Hint="Описание" Margin="5,0,0,0" TextWrapping="Wrap" AcceptsReturn="True" Height="80" Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                    <TextBlock Text="Цена:" Width="220" VerticalAlignment="Center"   />
+                    <TextBox x:Name="PriceTextBox"  materialDesign:HintAssist.Hint="Цена" Margin="5,0,0,0" Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                    <TextBlock Text="Кол-во на складе:" Width="220" VerticalAlignment="Center"   />
+                    <TextBox x:Name="StockQuantityTextBox"  materialDesign:HintAssist.Hint="Количество на складе"  Margin="5,0,0,0" Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                    <TextBlock Text="Url картинки:" Width="220" VerticalAlignment="Center"   />
+                    <TextBox x:Name="ImageUrlTextBox"  materialDesign:HintAssist.Hint="Url картинки" Margin="5,0,0,0" Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                    <TextBlock Text="Категория:" Width="220" VerticalAlignment="Center"   />
+                    <ComboBox x:Name="CategoryComboBox" materialDesign:HintAssist.Hint="Категория" Margin="5,0,0,0" Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                    <TextBlock Text="Бренд:" Width="220" VerticalAlignment="Center"   />
+                    <ComboBox x:Name="BrandComboBox" materialDesign:HintAssist.Hint="Бренд" Margin="5,0,0,0" Width="200"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Margin="10" x:Name="StackPanel2" Orientation="Vertical" Visibility="Collapsed" >
+                <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                    <TextBlock Text="Напряжение:" Width="220" VerticalAlignment="Center" />
+                    <ComboBox x:Name="VoltageComboBox"  Foreground="Black" materialDesign:HintAssist.Hint="Напряжение" Margin="5,0,0,0" Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                    <TextBlock Text="Емкость:" Width="220" VerticalAlignment="Center" />
+                    <TextBox x:Name="NominalCapacityTextBox" Foreground="Black" materialDesign:HintAssist.Hint="Емкость" Margin="5,0,0,0" Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                    <TextBlock Text="Тип аккумулятора:" Width="220" VerticalAlignment="Center" />
+                    <ComboBox x:Name="BatteryTypeComboBox" materialDesign:HintAssist.Hint="Тип аккумулятора" Margin="5,0,0,0" Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                    <TextBlock Text="Срок службы:" Width="220" VerticalAlignment="Center" />
+                    <TextBox x:Name="ServiceLifeBoxTextBox" materialDesign:HintAssist.Hint="Срок службы" Margin="5,0,0,0" Width="200"/>
+                </StackPanel>
+            </StackPanel>
+            
+                <StackPanel  Grid.Column="1" Margin="10" x:Name="StackPanel1" Orientation="Vertical" Visibility="Collapsed" >
+                    <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                        <TextBlock Text="Макс. скорость:" Width="220" VerticalAlignment="Center"   />
+                        <TextBox x:Name="MaximumSpeedTextBox" materialDesign:HintAssist.Hint="Максимальная скорость" Margin="5,0,0,0" Width="200"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                        <TextBlock Text="Макс. пробег:" Width="220" VerticalAlignment="Center"   />
+                        <TextBox x:Name="MaximumRangeTextBox" materialDesign:HintAssist.Hint="Максимальный пробег" Margin="5,0,0,0" Width="200"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                        <TextBlock Text="Макс. нагрузка:" Width="220" VerticalAlignment="Center"   />
+                        <TextBox x:Name="MaxLoadTextBox" materialDesign:HintAssist.Hint="Максимальная нагрузка" Margin="5,0,0,0" Width="200"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                        <TextBlock Text="Мощность мотора:" Width="220" VerticalAlignment="Center"   />
+                        <TextBox x:Name="MotorPowerTextBox" materialDesign:HintAssist.Hint="Мощность мотора" Margin="5,0,0,0" Width="200"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                        <TextBlock Text="Напряжение:" Width="220" VerticalAlignment="Center"   />
+                        <TextBox x:Name="VoltageTextBox" materialDesign:HintAssist.Hint="Напряжение" Margin="5,0,0,0" Width="200"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                        <TextBlock Text="Емкость:" Width="220" VerticalAlignment="Center"   />
+                        <TextBox x:Name="CapacityTextBox" materialDesign:HintAssist.Hint="Емкость" Margin="5,0,0,0" Width="200"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                        <TextBlock Text="Время полной зарядки:" Width="220" VerticalAlignment="Center"   />
+                        <TextBox x:Name="FullChargeTimeTextBox" materialDesign:HintAssist.Hint="Время полной зарядки" Margin="5,0,0,0" Width="200"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                        <TextBlock Text="Диаметр колес:" Width="220" VerticalAlignment="Center"   />
+                        <TextBox x:Name="WheelDiameterTextBox" materialDesign:HintAssist.Hint="Диаметр колес" Margin="5,0,0,0" Width="200"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                        <TextBlock Text="Кол-во скоростей:" Width="220" VerticalAlignment="Center"   />
+                        <TextBox x:Name="NumberOfSpeedsTextBox" materialDesign:HintAssist.Hint="Количество скоростей" Margin="5,0,0,0" Width="200"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                        <TextBlock Text="Материал рамы:" Width="220" VerticalAlignment="Center"   />
+                        <ComboBox x:Name="FrameMaterialComboBox" materialDesign:HintAssist.Hint="Материал рамы" Margin="5,0,0,0" Width="200"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                        <TextBlock Text="Передние тормоза:" Width="220" VerticalAlignment="Center"   />
+                        <ComboBox x:Name="FrontBrakesComboBox" materialDesign:HintAssist.Hint="Передние тормоза" Margin="5,0,0,0" Width="200"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                        <TextBlock Text="Задние тормоза:" Width="220" VerticalAlignment="Center"   />
+                        <ComboBox x:Name="RearBrakesComboBox" materialDesign:HintAssist.Hint="Задние тормоза" Margin="5,0,0,0" Width="200"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                        <TextBlock Text="Вес:" Width="220" VerticalAlignment="Center"   />
+                        <TextBox x:Name="WeightTextBox" materialDesign:HintAssist.Hint="Вес" Margin="5,0,0,0" Width="200"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                        <TextBlock Text="Размеры:" Width="220" VerticalAlignment="Center"   />
+                        <TextBox x:Name="DimensionsTextBox" materialDesign:HintAssist.Hint="Размеры" Margin="5,0,0,0" Width="200"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                        <TextBlock Text="Размеры в упаковке:" Width="220" VerticalAlignment="Center"   />
+                        <TextBox x:Name="PackageDimensionsTextBox" materialDesign:HintAssist.Hint="Размеры в упаковке" Margin="5,0,0,0" Width="200"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                        <TextBlock Text="Тип привода:" Width="220" VerticalAlignment="Center"   />
+                        <ComboBox x:Name="DriveComboBox" materialDesign:HintAssist.Hint="Тип привода" Margin="5,0,0,0" Width="200"/>
+                    </StackPanel>
+                    <CheckBox x:Name="SoundSignalCheckBox" FontSize="20" Foreground="White" Content="Звуковой сигнал" Margin="10" />
+                    <CheckBox x:Name="WingsCheckBox" FontSize="20" Foreground="White" Content="Крылья" Margin="10" />
+                </StackPanel>
+
+            
+        </Grid>
+        <Button  Content="Добавить товар" Grid.Row="2" Click="ButtonAddProduct_Click"  HorizontalAlignment="Right" Margin="10" VerticalAlignment="Center" IsDefault="True" />
+    </Grid>
+</Page>

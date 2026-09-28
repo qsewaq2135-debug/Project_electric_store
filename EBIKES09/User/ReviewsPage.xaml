@@ -1,0 +1,124 @@
+﻿<Page x:Class="EBIKES09.ReviewsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:local="clr-namespace:EBIKES09"
+      mc:Ignorable="d"
+      Title="ReviewsPage" 
+      Background="#F5F5F5">
+
+    <Page.Resources>
+        <!-- Стиль для кнопок -->
+        <Style x:Key="CustomButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#FF0E263F"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect ShadowDepth="3" Color="#40000000" Opacity="0.5" BlurRadius="5"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Стиль для текстовых блоков -->
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#0E263F"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+        </Style>
+
+        <!-- Стиль для отзывов -->
+        <Style x:Key="ReviewItemStyle" TargetType="Border">
+            <Setter Property="BorderBrush" Value="#D0D0D0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Background" Value="#FFFFFF"/>
+        </Style>
+
+        <!-- Конвертер для отображения рейтинга в виде звездочек -->
+        <local:RatingReviewToStarsConverter x:Key="RatingReviewToStarsConverter"/>
+    </Page.Resources>
+
+    <Grid Background="#E8E8E8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок и рейтинг товара -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+            <TextBlock Text="Отзывы о товаре: " FontSize="20" FontWeight="Bold"/>
+            <TextBlock x:Name="ProductNameTextBlock" FontSize="20" FontWeight="Bold"/>
+            <TextBlock Text="Рейтинг: " FontSize="20" FontWeight="Bold" Margin="10,0,0,0"/>
+            <TextBlock x:Name="ProductRatingTextBlock" FontSize="20" FontWeight="Bold"/>
+        </StackPanel>
+
+        <!-- Фильтр по рейтингу -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+            <TextBlock Text="Фильтр по рейтингу: " FontSize="16" VerticalAlignment="Center"/>
+            <ComboBox x:Name="RatingFilterComboBox" Width="100" VerticalAlignment="Center" SelectionChanged="RatingFilterComboBox_SelectionChanged">
+                <ComboBoxItem Content="Все"/>
+                <ComboBoxItem Content="★☆☆☆☆"/>
+                <ComboBoxItem Content="★★☆☆☆"/>
+                <ComboBoxItem Content="★★★☆☆"/>
+                <ComboBoxItem Content="★★★★☆"/>
+                <ComboBoxItem Content="★★★★★"/>
+            </ComboBox>
+        </StackPanel>
+
+        <!-- Список отзывов -->
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" Margin="10">
+            <ItemsControl x:Name="ReviewsItemsControl">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Style="{StaticResource ReviewItemStyle}">
+                            <StackPanel>
+                                <TextBlock Text="{Binding User.FirstName}" FontWeight="Bold" FontSize="20"/>
+                                <TextBlock Text="{Binding Comment}" FontSize="18" TextWrapping="Wrap"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Оценка: " FontSize="16"/>
+                                    <TextBlock Text="{Binding Rating, Converter={StaticResource RatingReviewToStarsConverter}}" FontSize="16"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <!-- Форма добавления нового отзыва -->
+        <Border Grid.Row="3" Background="#FFFFFF" Padding="10" Margin="10" CornerRadius="5">
+            <StackPanel>
+                <TextBlock Text="Добавить отзыв" FontSize="24" FontWeight="Bold" Margin="0,0,0,10"/>
+                <TextBox x:Name="ReviewTextBox" FontSize="20" Height="100" TextWrapping="Wrap" AcceptsReturn="True"  Margin="0,0,0,10"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Оценка: " FontSize="16" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="RatingComboBox" Width="100" VerticalAlignment="Center">
+                        <ComboBoxItem Content="★☆☆☆☆"/>
+                        <ComboBoxItem Content="★★☆☆☆"/>
+                        <ComboBoxItem Content="★★★☆☆"/>
+                        <ComboBoxItem Content="★★★★☆"/>
+                        <ComboBoxItem Content="★★★★★"/>
+                    </ComboBox>
+                </StackPanel>
+                <Button Content="Отправить отзыв" Click="ButtonAddReview_click"  Style="{StaticResource CustomButtonStyle}" Margin="0,10,0,0"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

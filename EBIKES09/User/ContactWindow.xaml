@@ -1,0 +1,62 @@
+﻿<Page x:Class="EBIKES09.ContactPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Контакты"   >
+    <Page.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontSize" Value="26"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+    </Page.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Background="#E8E8E8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            
+
+            <!-- Левая часть с картинкой -->
+            <Viewbox Stretch="Uniform" MinHeight="200" MinWidth="200" MaxHeight="1000" MaxWidth="1000" Margin="0,10,0,10" Grid.Column="1">
+                <MediaElement Source="Image\matiz2.mp4"
+             Stretch="Uniform" IsMuted="True"  />
+                
+            </Viewbox>
+            
+
+            <!-- Правая часть с контактной информацией -->
+            <StackPanel HorizontalAlignment="Left" Grid.Column="0" Margin="20,20,20,10">
+                <TextBlock Text="Контакты" FontSize="30" FontWeight="Bold" Margin="0,10,0,20" />
+
+                <TextBlock Text="Вадим Шамшеев" FontWeight="SemiBold" Margin="0,0,0,5" />
+                <TextBlock Text="matizzzz@yandex.ru" TextDecorations="Underline" Margin="0,0,0,10"/>
+                <TextBlock Text="VK:@manysub" TextDecorations="Underline" Margin="0,0,0,10"/>
+
+                <TextBlock Text="C#, WPF" FontWeight="SemiBold" Margin="0,10,0,5" />
+                <TextBlock Text="Анна Беляева" Margin="0,0,0,5"/>
+                <TextBlock Text="+79651889488" Margin="0,0,0,5"/>
+                <TextBlock Text="VK:@anna_bellyaeva" TextDecorations="Underline" Margin="0,0,0,10"/>
+
+                <TextBlock Text="WORD, ГОСТ" FontWeight="SemiBold" Margin="0,10,0,5" />
+                <TextBlock Text="Нина Шутова" Margin="0,0,0,5"/>
+                <TextBlock Text="Eror404" TextDecorations="Underline" Margin="0,0,0,10"/>
+
+                <TextBlock Text="Социальные сети" FontWeight="SemiBold" Margin="0,10,0,5"/>
+                <TextBlock Text="Vkontakte" TextDecorations="Underline" Margin="0,0,0,5"/>
+                <TextBlock Text="YouTube" TextDecorations="Underline" Margin="0,0,0,5"/>
+                <TextBlock Text="Telegram" TextDecorations="Underline" Margin="0,0,0,5"/>
+
+                <TextBlock Text="Адрес" FontWeight="SemiBold" Margin="0,10,0,5"/>
+                <TextBlock Text="г. Екатеринбург,
+ул. Куйбышева 38" TextDecorations="Underline" Margin="0,0,0,10"/>
+
+
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>

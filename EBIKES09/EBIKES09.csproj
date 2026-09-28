@@ -1,0 +1,348 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Admin\Image\AkbStore\akbKugo.png" />
+    <None Remove="Admin\Image\EbikeStore\3while.png" />
+    <None Remove="Admin\Image\EbikeStore\citi.png" />
+    <None Remove="Admin\Image\EbikeStore\eltrecoUltraMax.png" />
+    <None Remove="Admin\Image\EbikeStore\fatBike.png" />
+    <None Remove="Admin\Image\EbikeStore\h10.png" />
+    <None Remove="Admin\Image\EbikeStore\power.png" />
+    <None Remove="Admin\Image\EbikeStore\rock.png" />
+    <None Remove="Image\28.jpg" />
+    <None Remove="Image\287.jpg" />
+    <None Remove="Image\44.wmv" />
+    <None Remove="Image\55.wmv" />
+    <None Remove="Image\akb.png" />
+    <None Remove="Image\akb1.png" />
+    <None Remove="Image\AkbStore\akbKugo.png" />
+    <None Remove="Image\avatar.jpg" />
+    <None Remove="Image\betary.png" />
+    <None Remove="Image\cart.png" />
+    <None Remove="Image\e-bike.png" />
+    <None Remove="Image\e-bike1.png" />
+    <None Remove="Image\EbikeStore\3while.png" />
+    <None Remove="Image\EbikeStore\citi.png" />
+    <None Remove="Image\EbikeStore\fatBike.png" />
+    <None Remove="Image\EbikeStore\h10.png" />
+    <None Remove="Image\EbikeStore\power.png" />
+    <None Remove="Image\EbikeStore\rock.png" />
+    <None Remove="Image\favorite.png" />
+    <None Remove="Image\information.png" />
+    <None Remove="Image\logo.jpg" />
+    <None Remove="Image\logo1.png" />
+    <None Remove="Image\logo2.ico" />
+    <None Remove="Image\logo2.png" />
+    <None Remove="Image\logo22.png" />
+    <None Remove="Image\logo23.ico" />
+    <None Remove="Image\matiz.mp4" />
+    <None Remove="Image\matiz2.mp4" />
+    <None Remove="Image\minus.png" />
+    <None Remove="Image\no_photo.png" />
+    <None Remove="Image\pencil.png" />
+    <None Remove="Image\plus.png" />
+    <None Remove="Image\sale.png" />
+    <None Remove="Image\Secret.jpg" />
+    <None Remove="Image\star1.png" />
+    <None Remove="Image\star2.png" />
+    <None Remove="Image\star3.png" />
+    <None Remove="Image\star4.png" />
+    <None Remove="Image\star5.png" />
+    <None Remove="Image\Store.jpg" />
+    <None Remove="Image\user.png" />
+    <None Remove="Image\user1.png" />
+    <None Remove="Image\UserProfil.png" />
+    <None Remove="User\Image\akb.png" />
+    <None Remove="User\Image\akb1.png" />
+    <None Remove="User\Image\AkbStore\akbhalogen.png" />
+    <None Remove="User\Image\AkbStore\akbKugo.png" />
+    <None Remove="User\Image\avatar.jpg" />
+    <None Remove="User\Image\betary.png" />
+    <None Remove="User\Image\cart.png" />
+    <None Remove="User\Image\e-bike.png" />
+    <None Remove="User\Image\e-bike1.png" />
+    <None Remove="User\Image\EbikeStore\3while.png" />
+    <None Remove="User\Image\EbikeStore\citi.png" />
+    <None Remove="User\Image\EbikeStore\eltrecoUltraMax.png" />
+    <None Remove="User\Image\EbikeStore\fatBike.png" />
+    <None Remove="User\Image\EbikeStore\h10.png" />
+    <None Remove="User\Image\EbikeStore\image.png" />
+    <None Remove="User\Image\EbikeStore\minako-f10-pro.png" />
+    <None Remove="User\Image\EbikeStore\minakoF11.png" />
+    <None Remove="User\Image\EbikeStore\power.png" />
+    <None Remove="User\Image\EbikeStore\rock.png" />
+    <None Remove="User\Image\EbikeStore\whiteSiberiaCamry3.51200W.png" />
+    <None Remove="User\Image\favorite.png" />
+    <None Remove="User\Image\information.png" />
+    <None Remove="User\Image\logo.jpg" />
+    <None Remove="User\Image\logo1.png" />
+    <None Remove="User\Image\logo2.ico" />
+    <None Remove="User\Image\logo22.png" />
+    <None Remove="User\Image\logo23.ico" />
+    <None Remove="User\Image\matiz2.mp4" />
+    <None Remove="User\Image\minus.png" />
+    <None Remove="User\Image\no_photo.png" />
+    <None Remove="User\Image\pencil.png" />
+    <None Remove="User\Image\plus.png" />
+    <None Remove="User\Image\sale.png" />
+    <None Remove="User\Image\Secret.jpg" />
+    <None Remove="User\Image\star1.png" />
+    <None Remove="User\Image\star2.png" />
+    <None Remove="User\Image\star3.png" />
+    <None Remove="User\Image\star4.png" />
+    <None Remove="User\Image\star5.png" />
+    <None Remove="User\Image\Store.jpg" />
+    <None Remove="User\Image\user.png" />
+    <None Remove="User\Image\user1.png" />
+    <None Remove="User\Image\UserProfil.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Admin\Image\AkbStore\akbKugo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Admin\Image\EbikeStore\eltrecoUltraMax.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Admin\Image\EbikeStore\h10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\EbikeStore\h10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\information.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\matiz2.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\minus.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\no_photo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\pencil.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\plus.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\star2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Image\AkbStore\akbKugo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\logo2.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\logo22.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\logo23.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\Secret.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\star1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\star3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\star4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\star5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\user1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\UserProfil.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="User\Image\AkbStore\akbhalogen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="User\Image\AkbStore\akbKugo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="User\Image\EbikeStore\eltrecoUltraMax.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="User\Image\EbikeStore\h10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="User\Image\EbikeStore\minako-f10-pro.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="User\Image\EbikeStore\minakoF11.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="User\Image\EbikeStore\whiteSiberiaCamry3.51200W.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="User\Image\information.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="User\Image\logo2.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="User\Image\logo22.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="User\Image\logo23.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="User\Image\matiz2.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="User\Image\minus.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="User\Image\no_photo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="User\Image\pencil.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="User\Image\plus.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="User\Image\Secret.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="User\Image\star1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="User\Image\star2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="User\Image\star3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="User\Image\star4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="User\Image\star5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="User\Image\Store.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="User\Image\user1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="User\Image\UserProfil.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Admin\Image\EbikeStore\3while.png" />
+    <Resource Include="Admin\Image\EbikeStore\citi.png" />
+    <Resource Include="Admin\Image\EbikeStore\fatBike.png" />
+    <Resource Include="Admin\Image\EbikeStore\power.png" />
+    <Resource Include="Admin\Image\EbikeStore\rock.png" />
+    <Resource Include="Image\betary.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\EbikeStore\fatBike.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Image\avatar.jpg" />
+    <Resource Include="Image\EbikeStore\3while.png" />
+    <Resource Include="Image\EbikeStore\citi.png" />
+    <Resource Include="Image\EbikeStore\power.png" />
+    <Resource Include="Image\EbikeStore\rock.png" />
+    <Resource Include="Image\favorite.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Image\akb.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HamburgerMenu" Version="0.1.0" />
+    <PackageReference Include="Humanizer.Core" Version="2.14.1" />
+    <PackageReference Include="MahApps.Metro" Version="2.4.10" />
+    <PackageReference Include="MahApps.Metro.IconPacks" Version="5.1.0" />
+    <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="5.1.0" />
+    <PackageReference Include="MaterialDesignColors" Version="5.2.1" />
+    <PackageReference Include="MaterialDesignThemes" Version="5.2.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Npgsql" Version="9.0.2" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Image\akb1.png" />
+    <Resource Include="Image\cart.png" />
+    <Resource Include="Image\e-bike.png" />
+    <Resource Include="Image\e-bike1.png" />
+    <Resource Include="Image\logo.jpg" />
+    <Resource Include="Image\logo1.png" />
+    <Resource Include="Image\sale.png" />
+    <Content Include="Image\Store.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Image\user.png" />
+    <Resource Include="User\Image\akb.png" />
+    <Resource Include="User\Image\akb1.png" />
+    <Resource Include="User\Image\avatar.jpg" />
+    <Resource Include="User\Image\betary.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="User\Image\cart.png" />
+    <Resource Include="User\Image\e-bike.png" />
+    <Resource Include="User\Image\e-bike1.png" />
+    <Content Include="User\Image\EbikeStore\3while.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="User\Image\EbikeStore\citi.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="User\Image\EbikeStore\fatBike.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="User\Image\EbikeStore\image.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="User\Image\EbikeStore\power.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="User\Image\EbikeStore\rock.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="User\Image\favorite.png" />
+    <Resource Include="User\Image\logo.jpg" />
+    <Resource Include="User\Image\logo1.png" />
+    <Resource Include="User\Image\sale.png" />
+    <Resource Include="User\Image\user.png" />
+  </ItemGroup>
+
+</Project>

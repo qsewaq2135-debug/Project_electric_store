@@ -1,0 +1,268 @@
+﻿<Page x:Class="EBIKES09.UserProfilePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:local="clr-namespace:EBIKES09"
+      mc:Ignorable="d"
+      Title="UserProfilePage"
+      Focusable="True"
+      Background="#F5F5F5">
+    
+    <Page.Resources>
+        <local:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <local:StatusToColorConverter x:Key="StatusToColorConverter" />
+
+        <Style x:Key="OrderItemStyle" TargetType="ListBoxItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border x:Name="Border" 
+                            Background="White"
+                            CornerRadius="8"
+                            Padding="0"
+                            Margin="0,0,0,10"
+                            BorderThickness="1"
+                            BorderBrush="#E0E0E0">
+                            <ContentPresenter />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#F5F5F5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!-- Стиль для текстовых блоков -->
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#0E263F"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+        </Style>
+
+        <!-- Стиль для заголовков -->
+        <Style x:Key="HeaderTextBlock" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#0E263F"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+        <Style x:Key="HeaderTextBox" TargetType="TextBox">
+            <Setter Property="Foreground" Value="#0E263F"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="0,10,10,10"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+        </Style>
+
+        <!-- Стиль для кнопок -->
+        <Style x:Key="CustomButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#FF0E263F"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect ShadowDepth="3" Color="#40000000" Opacity="0.5" BlurRadius="5"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="#E8E8E8" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Верхняя панель с логотипом и корзиной -->
+      
+
+        <!-- Боковая панель с меню -->
+        
+
+        <!-- Информация о пользователе -->
+        <DockPanel Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <Viewbox MinHeight="89" MinWidth="89" MaxHeight="250" MaxWidth="250" Stretch="Uniform">
+                    <Image Source="Image\UserProfil.png" Height="128" Width="128" HorizontalAlignment="Left" Margin="30"/>
+                </Viewbox>
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Имя: " Style="{StaticResource HeaderTextBlock}"/>
+                        <TextBox  x:Name="FirstName_box" Text="{Binding FirstName, Mode=TwoWay}"  Style="{StaticResource HeaderTextBox}"/>
+                        <Button Click="ButtonEditePencil_Click" BorderBrush="Transparent" BorderThickness="0" Background="Transparent">
+                            <Image Source="Image/pencil.png"  Height="32" Width="32"></Image>
+                        </Button>
+                        <Button Content="Сохранить изменения"
+    Click="Save_Click"
+        x:Name="SaveButton"
+    Visibility="Collapsed"
+    Margin="20 0 0 0" Style="{StaticResource CustomButtonStyle}"  Height="30" Width="150"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Фамилия: " Style="{StaticResource HeaderTextBlock}"/>
+                        <TextBox x:Name="LastName_box" Text="{Binding LastName, Mode=TwoWay}" Style="{StaticResource HeaderTextBox}"  />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Номер телефона: " Style="{StaticResource HeaderTextBlock}"/>
+                        <TextBox x:Name="PhoneNumber_box" Text="{Binding PhoneNumber}" Style="{StaticResource HeaderTextBox}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Email: " Style="{StaticResource HeaderTextBlock}"/>
+                        <TextBox x:Name="Email_box" Text="{Binding Email}" Style="{StaticResource HeaderTextBox}"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </DockPanel>
+
+        <Popup x:Name="PasswordPopup" IsOpen="False" Placement="Center" StaysOpen="False" PopupAnimation="Slide">
+            <Border BorderBrush="Black" Background="White" BorderThickness="0.5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Старый пароль:" FontSize="20" Width="150" Margin="10"  VerticalAlignment="Center"/>
+                    <PasswordBox Grid.Row="0" Grid.Column="1" x:Name="OldPasswordTextBox"  FontSize="16" Margin="10" Width="200"/>
+
+                    <TextBlock Grid.Row="1" Grid.Column="0"  Text="Новый пароль:" FontSize="20" Width="150" Margin="10" VerticalAlignment="Center"/>
+                    <PasswordBox Grid.Row="1" Grid.Column="1" x:Name="NewPasswordTextBox" FontSize="16" Margin="10" Width="200"/>
+
+                    <TextBlock  Grid.Row="2" Grid.Column="0"  Text="Подтверждение пароля:" FontSize="20" Width="230" Margin="10" VerticalAlignment="Center"/>
+                    <PasswordBox Grid.Row="2" Grid.Column="1" x:Name="ConfirmPasswordTextBox" FontSize="16" Margin="10" Width="200"/>
+
+                    <TextBlock x:Name="TextBlockPassword" Grid.Row="3" Grid.ColumnSpan="2" FontSize="20" Foreground="Red" Margin="10,0,10,0" Visibility="Collapsed" TextWrapping="Wrap"></TextBlock>
+                    
+                    <Button Grid.Row="4" Grid.ColumnSpan="2" FontSize="20" Style="{StaticResource CustomButtonStyle}" Content="Сохранить"  Click="ButtonSaveChanges_Click" HorizontalAlignment="Center" Margin="0,10,0,10" Width="200"/>
+
+                
+                </Grid>
+            </Border>
+        </Popup>
+
+        <!-- Кнопки редактирования -->
+        <StackPanel Grid.Column="1" Grid.Row="3" Margin="10">
+            <Button Content="Редактировать заказы" Name="ButtonOrderAdmin" Click="ButtonOrderAdmin_click" Style="{StaticResource CustomButtonStyle}" Height="40" Width="200" HorizontalAlignment="Left" Margin="0 0 0 20"/>
+            <Button Content="Редактировать пользователей" Name="ButtonUserAdmin" Click="ButtonUserAdmin_click" Style="{StaticResource CustomButtonStyle}" Height="40" Width="200" HorizontalAlignment="Left"/>
+        </StackPanel>
+
+        <!-- История заказов -->
+        <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="3" Grid.RowSpan="2" Grid.ColumnSpan="3" Margin="10">
+            
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Style="{StaticResource HeaderTextBlock}" Name="TextBlickDataGrid" Margin="20,10" Text="История заказов"/>
+                <CheckBox x:Name="ShowArchivedCheckBox" Content="Показать архивные заказы" 
+                  Margin="20,0,0,0" FontSize="20" VerticalAlignment="Center"
+                  Checked="ShowArchivedCheckBox_Changed" Unchecked="ShowArchivedCheckBox_Changed"/>
+            </StackPanel>
+
+            <ListBox x:Name="ProfileListBox" Grid.Row="4" MinHeight="400" MaxHeight="800" Grid.ColumnSpan="3"
+             Background="Transparent" BorderThickness="0" 
+             ItemContainerStyle="{StaticResource OrderItemStyle}"
+             ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- Заголовок заказа -->
+                            <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+                                <TextBlock Text="Заказ №" FontWeight="Bold" FontSize="24"/>
+                                <TextBlock Text="{Binding OrderId}" FontWeight="Bold" FontSize="24"/>
+                                <TextBlock Margin="20,0,0,0" Text="от " FontSize="16" Foreground="#667"/>
+                                <TextBlock Text="{Binding OrderDate, StringFormat='dd.MM.yyyy'}" FontSize="16" Foreground="#666"/>
+                            </StackPanel>
+
+                            <!-- Список товаров -->
+                            <ItemsControl Grid.Row="1" Grid.Column="0" ItemsSource="{Binding OrderDetils}" Margin="0,10,0,0">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Margin="0,5">
+                                            <TextBlock Text="{Binding Product.ProductName}" FontSize="16" FontWeight="SemiBold"/>
+                                            <StackPanel Orientation="Horizontal" Margin="10,5,0,0">
+                                                <TextBlock FontSize="16" Text="{Binding Product.Price, StringFormat='{}{0}₽'}"/>
+                                                <TextBlock  FontSize="16" Text="{Binding Quantity, StringFormat=' × {0}'}" Margin="5,0,0,0"/>
+                                                <TextBlock  FontSize="16" Text="{Binding Subtotal, StringFormat=' = {0}₽'}" 
+                                                   Margin="5,0,0,0" FontWeight="Bold" Foreground="#0E263F"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                            <!-- Статус заказа с цветом -->
+                            <Border  Grid.Row="1" Grid.Column="1" 
+                            CornerRadius="4" Padding="8,4"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Right"
+                            Margin="0,10,0,0"
+                            Background="{Binding Status.StatusName, Converter={StaticResource StatusToColorConverter}}">
+                                <TextBlock Text="{Binding Status.StatusName}" 
+                                   FontWeight="Bold" 
+                                   Foreground="White"
+                                   TextAlignment="Center"/>
+                            </Border>
+
+                            <!-- Итоговая стоимость -->
+                            <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" Margin="0,10,0,0">
+                                <TextBlock Text="Итого:" FontWeight="Bold" FontSize="20"/>
+                                <TextBlock Text="{Binding TotalAmount, StringFormat=' {0}₽'}" 
+                                   FontWeight="Bold" FontSize="20" Foreground="#0E263F"
+                                   Margin="5,0,0,0"/>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+
+        <!-- Кнопки изменения пароля и выхода -->
+        <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10">
+            
+            <Button x:Name="ButtonEditePassword" Content="Изменить пароль" Click="ButtonEditePassword_Click" Style="{StaticResource CustomButtonStyle}" Height="30" Width="150"/>
+            <Button Content="Выход" Click="ButtonExite_Click" Style="{StaticResource CustomButtonStyle}" Height="30" Width="150" Margin="10 0 0 0"/>
+        </StackPanel>
+    </Grid>
+</Page>
